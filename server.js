@@ -15,9 +15,10 @@ if (missingEnvVars.length > 0) {
 }
 
 // Import routes
-const authRoutes = require("./backend/src/routes/auth.routes");
-const eventRoutes = require("./backend/src/routes/event.routes");
+const authRoutes         = require("./backend/src/routes/auth.routes");
+const eventRoutes        = require("./backend/src/routes/event.routes");
 const registrationRoutes = require("./backend/src/routes/registration.routes");
+const adminRoutes        = require("./backend/src/routes/adminRoutes");
 
 const app = express();
 
@@ -33,9 +34,10 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use("/api/auth", authRoutes);
-app.use("/api/events", eventRoutes);
+app.use("/api/auth",          authRoutes);
+app.use("/api/events",        eventRoutes);
 app.use("/api/registrations", registrationRoutes);
+app.use("/api/admin",         adminRoutes);
 
 // Health check endpoint
 app.get("/api/health", (req, res) => {
